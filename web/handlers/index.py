@@ -7,7 +7,7 @@
 
 import json
 
-from .base import *
+from web.handlers.base import BaseHandler
 
 
 class IndexHandlers(BaseHandler):
@@ -28,11 +28,14 @@ class IndexHandlers(BaseHandler):
                     tplid = tpl['id']
                     break
         tplid = int(tplid)
-        tpl = self.check_permission(await self.db.tpl.get(tplid, fields=('id', 'userid', 'sitename', 'siteurl', 'note', 'variables')))
+        tpl = self.check_permission(await self.db.tpl.get(tplid, fields=('id', 'userid', 'sitename', 'siteurl', 'note', 'variables', 'init_env')))
         variables = json.loads(tpl['variables'])
-        
-        return await self.render('index.html', tpls=tpls, tplid=tplid, tpl=tpl, variables=variables)
+        if not tpl['init_env']:
+            tpl['init_env'] = '{}'
+
+        return await self.render('index.html', tpls=tpls, tplid=tplid, tpl=tpl, variables=variables, init_env=json.loads(tpl['init_env']))
+
 
 handlers = [
-        ('/', IndexHandlers),
-        ]
+    ('/', IndexHandlers),
+]
