@@ -14,13 +14,15 @@ import tornado.log
 
 from config import debug
 
-default_level = logging.DEBUG if debug else logging.INFO
+DEFAULT_LEVEL = logging.DEBUG if debug else logging.INFO
 
-class Log(object):
+
+class Log:
     '''
         封装后的logging
     '''
-    def __init__(self , logger = None, logger_level = default_level, log_dir_path = None, channel_level = default_level):
+
+    def __init__(self , logger=None, logger_level=DEFAULT_LEVEL, log_dir_path=None, channel_level=DEFAULT_LEVEL):
         '''
             指定保存日志的文件路径，日志级别，以及调用文件
             将日志存入到指定的文件中
@@ -28,13 +30,13 @@ class Log(object):
 
         # 创建一个logger
         logging.basicConfig()
-        if logger is None or isinstance(logger,str):
+        if logger is None or isinstance(logger, str):
             self.logger = logging.getLogger(logger)
-        elif isinstance(logger,logging.Logger):
+        elif isinstance(logger, logging.Logger):
             self.logger = logger
         self.logger.setLevel(logger_level)
         self.logger.propagate = False
-        
+
         # 创建一个handler，用于写入日志文件
         self.log_time = time.strftime("%Y_%m_%d")
 
@@ -43,7 +45,7 @@ class Log(object):
         formatter = tornado.log.LogFormatter(fmt=fmt)
 
         self.logger.handlers.clear()
-        
+
         # 创建一个handler，用于输出到控制台
         ch = logging.StreamHandler(sys.stdout)
         ch.setFormatter(formatter)
@@ -54,7 +56,7 @@ class Log(object):
 
         if log_dir_path:
             self.logger.propagate = True
-            self.log_name = os.path.join(log_dir_path,self.log_time + '.log')
+            self.log_name = os.path.join(log_dir_path, self.log_time + '.log')
             fh = logging.FileHandler(self.log_name, 'a', encoding='utf-8')
             fh.setFormatter(formatter)
             self.logger.addHandler(fh)

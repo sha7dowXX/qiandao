@@ -3,7 +3,7 @@
     "README.md"
   ],
   "imageSize": 100,
-  "commit": false,
+  "commit": true,
   "contributors": [
     {
       "login": "a76yyyy",
@@ -13,7 +13,8 @@
       "contributions": [
         "design",
         "code",
-        "maintenance"
+        "maintenance",
+        "doc"
       ]
     },
     {
@@ -24,7 +25,8 @@
       "contributions": [
         "design",
         "code",
-        "maintenance"
+        "maintenance",
+        "doc"
       ]
     },
     {
@@ -46,8 +48,9 @@
       "contributions": [
         "design",
         "blog",
-        "example",
-        "doc"
+        "doc",
+        "maintenance",
+        "code"
       ]
     },
     {
@@ -56,7 +59,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/8141453?v=4",
       "profile": "https://github.com/cdpidan",
       "contributions": [
-        "design"
+        "design",
+        "code"
       ]
     },
     {
@@ -106,8 +110,8 @@
       ]
     },
     {
-      "login": "hiCasper",
-      "name": "hiCasper",
+      "login": "caspershw",
+      "name": "Casper",
       "avatar_url": "https://avatars.githubusercontent.com/u/25276620?v=4",
       "profile": "https://blog.hicasper.com",
       "contributions": [
@@ -149,12 +153,86 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Cirn09",
+      "name": "Cirn09",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25722111?v=4",
+      "profile": "https://github.com/Cirn09",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Ovler-Young",
+      "name": "Ovler",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44089074?v=4",
+      "profile": "https://github.com/Ovler-Young",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Ansen",
+      "name": "An",
+      "avatar_url": "https://avatars.githubusercontent.com/u/676412?v=4",
+      "profile": "https://www.lshell.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Siman8",
+      "name": "Siman8",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32073730?v=4",
+      "profile": "https://github.com/Siman8",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "uiolee",
+      "name": "Uiolee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22849383?v=4",
+      "profile": "https://github.com/uiolee",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "OwnerCM",
+      "name": "OwnerCM",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22722811?v=4",
+      "profile": "https://github.com/OwnerCM",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jionkitten",
+      "name": "jionkitten",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30788097?v=4",
+      "profile": "https://github.com/jionkitten",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Patrick-Ze",
+      "name": "Patrick-Ze",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19711799?v=4",
+      "profile": "https://github.com/Patrick-Ze",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7,
-  "projectName": "qiandao",
-  "projectOwner": "qiandao-today",
+  "contributorsPerLine": 8,
+  "projectName": "qd",
+  "projectOwner": "qd-today",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs",
+  "commitConvention": "angular"
 }

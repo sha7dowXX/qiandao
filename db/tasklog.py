@@ -10,17 +10,17 @@ import time
 from sqlalchemy import INTEGER, Column, Integer, Text, delete, select
 from sqlalchemy.dialects.mysql import TINYINT
 
-from .basedb import AlchemyMixin, BaseDB
+from db.basedb import AlchemyMixin, BaseDB
 
 
-class Tasklog(BaseDB,AlchemyMixin):
+class Tasklog(BaseDB, AlchemyMixin):
     '''
     task log db
 
     id, taskid, success, ctime, msg
     '''
     __tablename__ = 'tasklog'
-    
+
     id = Column(Integer, primary_key=True)
     taskid = Column(INTEGER, nullable=False)
     success = Column(TINYINT(1), nullable=False)
@@ -31,11 +31,11 @@ class Tasklog(BaseDB,AlchemyMixin):
         now = time.time()
 
         insert = dict(
-                taskid = taskid,
-                success = success,
-                msg = msg,
-                ctime = now,
-                )
+            taskid=taskid,
+            success=success,
+            msg=msg,
+            ctime=now,
+        )
         return self._insert(Tasklog(**insert), sql_session=sql_session)
 
     async def list(self, fields=None, limit=1000, to_dict=True, sql_session=None, **kwargs):
@@ -43,19 +43,19 @@ class Tasklog(BaseDB,AlchemyMixin):
             _fields = Tasklog
         else:
             _fields = (getattr(Tasklog, field) for field in fields)
-        
+
         smtm = select(_fields)
-        
+
         for key, value in kwargs.items():
             smtm = smtm.where(getattr(Tasklog, key) == value)
-            
+
         if limit:
             smtm = smtm.limit(limit)
 
         result = await self._get(smtm.order_by(Tasklog.ctime.desc()), sql_session=sql_session)
         if to_dict and result is not None:
-            return [self.to_dict(row,fields) for row in result]
+            return [self.to_dict(row, fields) for row in result]
         return result
-    
+
     def delete(self, id, sql_session=None):
         return self._delete(delete(Tasklog).where(Tasklog.id == id), sql_session=sql_session)
